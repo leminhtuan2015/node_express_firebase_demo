@@ -1,0 +1,22 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+      "public": "public",
+      "rewrites": [
+          {
+            "source": "/",
+            "destination": "/views/home/index.html"
+          },
+          {
+            "source": "/home",
+            "destination": "/views/home/index.html"
+          },
+          {
+            "source": "/ok",
+            "function": "home"
+          }
+      ]
+  }
+}
