@@ -11,10 +11,9 @@ var app = express()
 
 global.app_root = path.resolve(__dirname)
 
-
-setting_routers()
 setting_view_engine()
 setting_express()
+setting_routers()
 
 // ---------------------------- BEGIN TEST ----------------------------
 //https://us-central1-languagelistening.cloudfunctions.net/app/api
@@ -45,17 +44,24 @@ function setting_view_engine(){
 
 function setting_express(){
     app.use(logger('dev'))
+
+    // parse application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: false }))
+
+    // parse application/json
     app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({extended: true}))
+
     app.use(cookieParser())
 }
 
 // ---------------------------- BEGIN RUNNING ----------------------------
 // IF YOU RUN WITH NODEJS RUN ON SYSTEM -> ./start_node_server
-//module.exports = app
+module.exports = app
+global.app_name = ""
 
 // IF YOU DEPLOY ON FIREBASE FUNCTIONS -> ../deploy
-exports.app = functions.https.onRequest(app)
+//exports.app = functions.https.onRequest(app)
+//global.app_name = "/app"
 
 // ---------------------------- END RUNNING ----------------------------
 
