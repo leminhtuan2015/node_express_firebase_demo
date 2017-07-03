@@ -1,2 +1,32 @@
-<h2>USERS</h2>
+<% users = []%>
+
 <% include ../header %>
+
+<div class="container">
+    <h2>Users</h2>
+    <a type="button" class="btn btn-primary" href="user/new">New</a>
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% users.forEach(function(user){ %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.time_reading_daily %> / <%= setting.time_reading_daily %></td>
+            <td><%= user.time_view_ad_daily %> / <%= setting.time_view_ad_daily %></td>
+            <td><%= user.lasttime_request_reading %></td>
+            <td><%= user.lasttime_request_view_ad %></td>
+
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
