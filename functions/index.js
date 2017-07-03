@@ -11,17 +11,12 @@ var app = express()
 
 global.app_root = path.resolve(__dirname)
 
-// FIREBASE
-//global.app_function = "app"
-
-//NODE
-global.app_function = ""
 
 setting_routers()
 setting_view_engine()
 setting_express()
 
-// ---------------------------- TEST ----------------------------
+// ---------------------------- BEGIN TEST ----------------------------
 //https://us-central1-languagelistening.cloudfunctions.net/app/api
 //https://us-central1-languagelistening.cloudfunctions.net/app/test
 //https://us-central1-languagelistening.cloudfunctions.net/home
@@ -34,7 +29,7 @@ app.get('/api', (request, response) => {
     response.send("API");
 });
 
-// ---------------------------- TEST ----------------------------
+// ---------------------------- END TEST ----------------------------
 
 function setting_routers(){
     require("./router")(router)
@@ -55,9 +50,23 @@ function setting_express(){
     app.use(cookieParser())
 }
 
-// IF YOU RUN WITH NODEJS RUN ON SYSTEM
- module.exports = app
-// npm start
+// ---------------------------- BEGIN RUNNING ----------------------------
+// IF YOU RUN WITH NODEJS RUN ON SYSTEM -> ./start_node_server
+global.app_function = ""
+module.exports = app
 
-// IF YOU DEPLOY ON FIREBASE FUNCTIONS
+// IF YOU DEPLOY ON FIREBASE FUNCTIONS -> ./deploy
+//global.app_function = "app"
 //exports.app = functions.https.onRequest(app)
+
+// ---------------------------- END RUNNING ----------------------------
+
+
+
+
+
+
+
+
+
+
