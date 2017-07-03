@@ -9,4 +9,8 @@ module.exports = function(router){
     router.get('/user/new', function(request, response) {
         user_controller.new_user(request, response)
     })
+
+    router.post('/user/create', function(request, response) {
+        user_controller.create(request, response)
+    })
 }

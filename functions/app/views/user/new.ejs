@@ -1,1 +1,17 @@
-NEW USER
+<% include ../header %>
+
+<h2>NEW USER</h2>
+
+<form class="container" method="POST" action=<%= app_name %>/user/create>
+    <div class="form-group">
+        <label>Email address:</label>
+        <input type="text" class="form-control" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label>Username:</label>
+        <input type="text" class="form-control" name="user_name" required>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
