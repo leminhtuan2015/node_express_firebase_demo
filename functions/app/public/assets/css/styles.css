@@ -8686,7 +8686,7 @@ fieldset[disabled] .btn-alizarin-alt.active {
 }
 /* Containers */
 body {
-  padding-top: 40px;
+  /*padding-top: 40px;*/
 }
 body.static-header {
   padding-top: 0;
