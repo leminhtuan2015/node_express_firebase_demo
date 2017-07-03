@@ -35,11 +35,11 @@ user_controller = {
             if(error){
                 //response.json({ user_name: user_name, email: email, success: false })
 
-                response.redirect("/user/")
+                response.redirect(app_name + "/user/")
             } else {
                 //response.json({ user_name: user_name, email: email, success: true })
 
-                response.redirect("/user/")
+                response.redirect(app_name + "/user/")
             }
         })
     }
