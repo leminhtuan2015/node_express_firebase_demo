@@ -14,6 +14,7 @@ global.app_root = path.resolve(__dirname)
 setting_view_engine()
 setting_express()
 setting_routers()
+setup_database()
 
 // ---------------------------- BEGIN TEST ----------------------------
 //https://us-central1-languagelistening.cloudfunctions.net/app/api
@@ -54,14 +55,29 @@ function setting_express(){
     app.use(cookieParser())
 }
 
+function setup_database(){
+    var firebase = require("firebase")
+
+    var config = {
+      apiKey: "AIzaSyB8dDltIyJlJq2Kf_uRBabcEM1ZD27gPAI",
+      authDomain: " express123456-b5610.firebaseapp.com",
+      databaseURL: "https://express123456-b5610.firebaseio.com/",
+      storageBucket: "express123456-b5610.appspot.com",
+    }
+
+    firebase.initializeApp(config)
+
+    global.database = firebase.database()
+}
+
 // ---------------------------- BEGIN RUNNING ----------------------------
 // IF YOU RUN WITH NODEJS RUN ON SYSTEM -> ./start_node_server
-//module.exports = app
-//global.app_name = ""
+module.exports = app
+global.app_name = ""
 
 // IF YOU DEPLOY ON FIREBASE FUNCTIONS -> ../deploy
-exports.app = functions.https.onRequest(app)
-global.app_name = "/app"
+//exports.app = functions.https.onRequest(app)
+//global.app_name = "/app"
 
 // ---------------------------- END RUNNING ----------------------------
 

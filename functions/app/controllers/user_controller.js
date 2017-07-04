@@ -1,6 +1,6 @@
 var User = require("../models/user")
 
-user_controller = {
+controller = {
     index: function(request, response) {
         var user = new User()
 
@@ -46,4 +46,4 @@ user_controller = {
 
 }
 
-module.exports = user_controller
+module.exports = controller

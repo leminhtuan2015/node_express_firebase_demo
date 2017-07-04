@@ -1,23 +1,21 @@
-var table_name = "users/"
+var table_name = "media/"
 
-function User(data) {
+function Media(data) {
 
     data = data || {}
     this.id = data.id
-    this.user_name = data.user_name
-    this.email = data.email
+    this.title = data.title
+    this.content = data.content
+    this.author = data.author
     this.created_at = new Date().getTime()
     this.updated_at = new Date().getTime()
-
-    this.showInfo = function(){
-        console.log("My name is : " + this.name + " - My email is : " + this.email)
-    }
 
     this.create = function(callback){
         database.ref(table_name).push(
         {
-            user_name: this.user_name,
-            email: this.email,
+            title: this.title,
+            content: this.content,
+            author: this.author,
             created_at: this.created_at,
             updated_at: this.updated_at
         }, function(error) {
@@ -25,8 +23,9 @@ function User(data) {
                  console.log('Error has occured during saving process')
                  callback(error)
             } else {
-                callback(null)
                 console.log("Data has been saved succesfully")
+                callback(null)
+
             }
         })
     }
@@ -44,14 +43,14 @@ function User(data) {
     }
 
     this.all = function(callback){
-        console.log("Get All Users")
+        console.log("Get All Media")
 
-        var users = []
+        var data = []
 
         database.ref(table_name)
             .once('value', function(snapshot) {
 
-                console.log("users A: " + JSON.stringify(snapshot))
+                console.log("Media A: " + JSON.stringify(snapshot))
 
                 snapshot.forEach(function(item) {
                     var itemVal = item.val()
@@ -59,19 +58,21 @@ function User(data) {
 
                     console.log(itemKey + " : " + JSON.stringify(itemVal))
 
-                    var user = {id: itemKey,
-                        user_name: itemVal.user_name,
-                        email: itemVal.email,
+                    var d = {
+                        id: itemKey,
+                        title: itemVal.title,
+                        content: itemVal.content,
+                        author: itemVal.author,
                         created_at: itemVal.created_at,
                         updated_at: itemVal.updated_at
                     }
 
-                    users.push(user)
+                    data.push(d)
                 })
 
-                users.sort(function(u1, u2){return u1.updated_at < u2.updated_at});
+                data.sort(function(d1, d2){return d1.updated_at < d2.updated_at});
 
-                callback(true, users)
+                callback(true, data)
             }, function(error) {
                 console.error(error)
                 callback(false, error)
@@ -79,4 +80,4 @@ function User(data) {
     }
 }
 
-module.exports = User
+module.exports = Media
