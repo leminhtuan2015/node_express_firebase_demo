@@ -14,7 +14,9 @@ function User(data) {
     }
 
     this.create = function(callback){
-        database.ref(table_name).push(
+        var user_id = this.id
+
+        database.ref(table_name + user_id).set(
         {
             user_name: this.user_name,
             email: this.email,
