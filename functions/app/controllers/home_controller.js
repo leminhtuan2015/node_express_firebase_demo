@@ -1,7 +1,7 @@
-home_controller = {
+controller = {
     index: function(request, response) {
         response.render('home/index', { title: 'Express' })
     }
 }
 
-module.exports = home_controller
+module.exports = controller
