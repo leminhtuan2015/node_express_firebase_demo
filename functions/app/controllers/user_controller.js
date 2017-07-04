@@ -6,7 +6,6 @@ controller = {
 
         user.all(function(isSuccess, data){
             if(isSuccess){
-                console.log("users B: " + JSON.stringify(data))
                 response.render('user/index', { title: 'Express', users: data})
             } else {
                 response.render('user/index', { title: 'Express', users: []})
@@ -21,13 +20,15 @@ controller = {
     create: function(request, response) {
         console.log("Create User")
 
+        var id = request.body.id
         var user_name = request.body.user_name
         var email = request.body.email
 
+        console.log("id: " + id)
         console.log("user_name: " + user_name)
         console.log("email: " + email)
 
-        var user = new User({user_name: user_name, email: email})
+        var user = new User({id: id, user_name: user_name, email: email})
 
         user.showInfo()
 

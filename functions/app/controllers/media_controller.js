@@ -1,8 +1,24 @@
 var Media = require("../models/media")
+var User = require("../models/user")
 
 controller = {
     random: function(request, response){
-        response.json({title: "1", content: "2", author: "3"})
+
+        var lastItemId = request.query.lastItemId
+        var uid = request.query.uid
+
+        console.log("lastItemId : " + lastItemId)
+        console.log("uid : " + uid)
+
+        var user = new User({id: uid, user_name: uid, email: uid})
+
+        user.create(function(error) {
+            if(error){
+                response.json({title: lastItemId, content: uid, author: "3"})
+            } else {
+                response.json({title: lastItemId, content: uid, author: "3"})
+            }
+        })
     },
 
     index: function(request, response) {
