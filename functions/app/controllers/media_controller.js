@@ -14,30 +14,28 @@ controller = {
             new Media().next(lastItemId, function(isSuccess, data){
                 if(isSuccess){
 
-                    if(data.id == lastItemId){
-                        new Media().first(function(isSuccess, data){
-                            if(isSuccess){
-                                response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
-                            } else {
-                                response.json(null)
-                            }
-                        })
+                    if(data.id == lastItemId || !data.id){
+                        response.redirect(app_name + "/media/first")
                     } else {
                         response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
                     }
                 } else {
-                    response.json(null)
+                    response.redirect(app_name + "/media/first")
                 }
             })
         } else {
-            new Media().first(function(isSuccess, data){
-                if(isSuccess){
-                    response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
-                } else {
-                    response.json(null)
-                }
-            })
+            response.redirect(app_name + "/media/first")
         }
+    },
+
+    first: function(request, response){
+        new Media().first(function(isSuccess, data){
+            if(isSuccess){
+                response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+            } else {
+                response.json(null)
+            }
+        })
     },
 
     index: function(request, response) {

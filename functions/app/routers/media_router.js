@@ -29,4 +29,8 @@ module.exports = function(router){
     router.post('/media/update', function(request, response) {
         controller.update(request, response)
     })
+
+    router.get('/media/first', function(request, response) {
+        controller.first(request, response)
+    })
 }

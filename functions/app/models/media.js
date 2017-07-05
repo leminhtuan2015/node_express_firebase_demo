@@ -68,7 +68,7 @@ function Media(data) {
     }
 
     this.first = function(callback){
-        database.ref(table_name).limitToFirst(1).on("value",
+        database.ref(table_name).limitToFirst(1).once("value",
         function(snapshot) {
             console.log("Media First 1: " + JSON.stringify(snapshot))
 
@@ -94,7 +94,7 @@ function Media(data) {
     }
 
     this.next = function(lastItemId, callback){
-        database.ref(table_name).orderByKey().startAt(lastItemId).limitToFirst(2).on("value",
+        database.ref(table_name).orderByKey().startAt(lastItemId).limitToFirst(2).once("value",
         function(snapshot) {
             console.log("Media First 1: " + JSON.stringify(snapshot))
 
