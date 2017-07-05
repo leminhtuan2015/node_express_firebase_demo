@@ -13,9 +13,20 @@ controller = {
         if(lastItemId){
             new Media().next(lastItemId, function(isSuccess, data){
                 if(isSuccess){
-                    response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+
+                    if(data.id == lastItemId){
+                        new Media().first(function(isSuccess, data){
+                            if(isSuccess){
+                                response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+                            } else {
+                                response.json(null)
+                            }
+                        })
+                    } else {
+                        response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+                    }
                 } else {
-                    response.json({title: "title", content: "content", author: "author", lastItemId: "lastItemId"})
+                    response.json(null)
                 }
             })
         } else {
@@ -23,7 +34,7 @@ controller = {
                 if(isSuccess){
                     response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
                 } else {
-                    response.json({title: "title", content: "content", author: "author", lastItemId: "lastItemId"})
+                    response.json(null)
                 }
             })
         }
