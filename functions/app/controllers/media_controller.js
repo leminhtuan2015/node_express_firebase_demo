@@ -17,7 +17,7 @@ controller = {
                     if(data.id == lastItemId || !data.id){
                         response.redirect(app_name + "/media/first")
                     } else {
-                        response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+                        response.json({title: data.title, content: data.content, author: data.author, image: data.image, lastItemId: data.id})
                     }
                 } else {
                     response.redirect(app_name + "/media/first")
