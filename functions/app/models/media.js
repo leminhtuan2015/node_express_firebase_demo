@@ -30,16 +30,41 @@ function Media(data) {
         })
     }
 
-    this.get = function(){
-
+    this.get = function(id, callback){
+        database.ref(table_name + id).once("value", function(snapshot) {
+            callback(true, snapshot.val())
+        }, function (errorObject) {
+            callback(false, errorObject.code)
+        })
     }
 
-    this.update = function(){
-
+    this.update = function(callback){
+        database.ref(table_name + this.id).set(
+        {
+            title: this.title,
+            content: this.content,
+            author: this.author,
+            created_at: this.created_at,
+            updated_at: this.updated_at
+        }, function(error) {
+            if (error) {
+                 console.log('Error has occured during saving process')
+                 callback(false)
+            } else {
+                console.log("Data has been saved succesfully")
+                callback(true)
+            }
+        })
     }
 
-    this.remove = function(){
-
+    this._delete = function(id, callback){
+        database.ref(table_name + id).remove(function (error) {
+            if (error) {
+                callback(false)
+            } else {
+                callback(true)
+            }
+        })
     }
 
     this.first = function(callback){

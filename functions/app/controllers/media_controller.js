@@ -41,7 +41,7 @@ controller = {
     },
 
     new_media: function(request, response) {
-        response.render('media/new', { title: 'Express' })
+        response.render('media/new', { title: 'Express', action: "create", media: null })
     },
 
     create: function(request, response) {
@@ -67,7 +67,60 @@ controller = {
                 response.redirect(app_name + "/media/")
             }
         })
-    }
+    },
+
+    edit: function(request, response, next){
+        var id = request.params.id
+
+        new Media().get(id, function(isSuccess, data){
+            if(isSuccess){
+
+                var media = data
+                media.id = id
+
+                console.log("Editing : " + JSON.stringify(data))
+                response.render('media/new', { title: 'Express', action: "update", media: media })
+            } else {
+                response.redirect(app_name + "/media/")
+            }
+        })
+
+
+    },
+
+    update: function(request, response){
+        var id = request.body.id
+        var title = request.body.title
+        var content = request.body.content
+        var author = request.body.author
+
+        var media = new Media({id: id, title: title, content: content, author: author})
+
+        media.update(function(isSuccess) {
+            if(isSuccess){
+                response.redirect(app_name + "/media/")
+            } else {
+                response.redirect(app_name + "/media/")
+            }
+        })
+    },
+
+    _delete: function(request, response){
+
+        var delete_id = request.params.id
+
+        console.log("delete id : " + delete_id)
+
+        new Media()._delete(delete_id, function(isSuccess){
+            if(isSuccess){
+                response.redirect(app_name + "/media/")
+            } else {
+                response.redirect(app_name + "/media/")
+            }
+        })
+    },
+
+
 }
 
 module.exports = controller
