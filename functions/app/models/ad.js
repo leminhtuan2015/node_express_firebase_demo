@@ -4,14 +4,16 @@ var default_id = "ad_config"
 function Ad(data) {
 
     data = data || {}
-    this.ad_id = data.ad_id
+    this.ad_id_banner = data.ad_id_banner
+    this.ad_id_inter = data.ad_id_inter
     this.created_at = new Date().getTime()
     this.updated_at = new Date().getTime()
 
     this.create = function(callback){
         database.ref(table_name + default_id).set(
         {
-            ad_id: this.ad_id,
+            ad_id_banner: this.ad_id_banner,
+            ad_id_inter: this.ad_id_inter,
             created_at: this.created_at,
             updated_at: this.updated_at
         }, function(error) {
@@ -48,13 +50,15 @@ function Ad(data) {
 
                 if(itemVal){
                     data = {
-                        ad_id: itemVal.ad_id,
+                        ad_id_banner: itemVal.ad_id_banner,
+                        ad_id_inter: itemVal.ad_id_inter,
                         created_at: itemVal.created_at,
                         updated_at: itemVal.updated_at
                     }
                 } else {
                     data = {
-                        ad_id: "",
+                        ad_id_banner: "",
+                        ad_id_inter: "",
                         created_at: 0,
                         updated_at: 0
                     }

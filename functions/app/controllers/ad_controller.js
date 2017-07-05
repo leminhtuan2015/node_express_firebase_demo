@@ -16,11 +16,13 @@ controller = {
 
     create: function(request, response) {
 
-        var ad_id = request.body.ad_id
+        var ad_id_banner = request.body.ad_id_banner
+        var ad_id_inter = request.body.ad_id_inter
 
-        console.log("ad_id : " + ad_id)
+        console.log("ad_id_banner : " + ad_id_banner)
+        console.log("ad_id_inter : " + ad_id_inter)
 
-        var ad = new Ad({ad_id: ad_id})
+        var ad = new Ad({ad_id_banner: ad_id_banner, ad_id_inter: ad_id_inter})
 
         ad.create(function(error) {
             if(error){
