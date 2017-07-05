@@ -17,4 +17,16 @@ module.exports = function(router){
     router.post('/media/create', function(request, response) {
         controller.create(request, response)
     })
+
+    router.get('/media/delete/:id', function(request, response) {
+        controller._delete(request, response)
+    })
+
+    router.get('/media/edit/:id', function(request, response) {
+        controller.edit(request, response)
+    })
+
+    router.post('/media/update', function(request, response) {
+        controller.update(request, response)
+    })
 }

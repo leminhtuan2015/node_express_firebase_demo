@@ -39,6 +39,9 @@ $(document).ready( function () {
                             <th>ID</th>
                             <th>Title</th>
                             <th>Content</th>
+                            <th>Author</th>
+                            <th>Edit</th>
+                            <th>delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,6 +50,9 @@ $(document).ready( function () {
                             <td><%= m.id %></td>
                             <td><%= m.title %></td>
                             <td><%= m.content %></td>
+                            <td><%= m.author %></td>
+                            <td><a href=<%= app_name %>/media/edit/<%= m.id %> >edit</a></td>
+                            <td><a href=<%= app_name %>/media/delete/<%= m.id %> >delete</a></td>
 
                         </tr>
                         <% }); %>

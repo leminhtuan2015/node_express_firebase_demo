@@ -2,21 +2,25 @@
 
 <h2>NEW Media</h2>
 
-<form class="container" method="POST" action=<%= app_name %>/media/create>
+<form class="container" method="POST" action=<%= app_name %>/media/<%= action %>>
     <div class="form-group">
         <label>Title:</label>
-        <input type="text" class="form-control" name="title">
+        <input type="text" class="form-control" name="title" <% if(media) {%> value="<%= media.title %>" <%}%>>
     </div>
 
     <div class="form-group">
         <label>Content:</label>
-        <input type="text" class="form-control" name="content" required>
+        <input type="text" class="form-control" name="content" required <% if(media) {%> value="<%= media.content %>" <%}%>>
     </div>
 
     <div class="form-group">
         <label>Author:</label>
-        <input type="text" class="form-control" name="author">
+        <input type="text" class="form-control" name="author" <% if(media) {%> value="<%= media.author %>" <%}%>>
     </div>
+
+    <%if(media){%>
+        <input type="hidden" name="id" value=<%= media.id  %> >
+    <%}%>
 
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
