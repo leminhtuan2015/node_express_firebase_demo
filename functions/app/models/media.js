@@ -50,8 +50,6 @@ function Media(data) {
         database.ref(table_name)
             .once('value', function(snapshot) {
 
-                console.log("Media A: " + JSON.stringify(snapshot))
-
                 snapshot.forEach(function(item) {
                     var itemVal = item.val()
                     var itemKey = item.key
