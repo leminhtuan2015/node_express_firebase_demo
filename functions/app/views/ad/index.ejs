@@ -21,9 +21,16 @@
     <div class="col-sm-8">
         <form method="post" action=<%= app_name %>/ad/create>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Ad ID</label>
+                <label class="col-sm-2 col-form-label">Ad ID Banner</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="ad_id" placeholder="Ad Id" <% if(ad) {%> value=<%= ad.ad_id %> <%}%> >
+                    <input type="text" class="form-control" name="ad_id_banner" placeholder="Ad Id Banner" <% if(ad) {%> value=<%= ad.ad_id_banner %> <%}%> >
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Ad ID Inter</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="ad_id_inter" placeholder="Ad Id Inter" <% if(ad) {%> value=<%= ad.ad_id_inter %> <%}%> >
                 </div>
             </div>
 
