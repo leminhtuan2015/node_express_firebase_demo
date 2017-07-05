@@ -10,6 +10,10 @@ module.exports = function(router){
         controller.new_user(request, response)
     })
 
+    router.get('/ad/ad_config', function(request, response) {
+        controller.get(request, response)
+    })
+
     router.post('/ad/create', function(request, response) {
         controller.create(request, response)
     })
