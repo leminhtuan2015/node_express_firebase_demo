@@ -72,12 +72,12 @@ function setup_database(){
 
 // ---------------------------- BEGIN RUNNING ----------------------------
 // IF YOU RUN WITH NODEJS RUN ON SYSTEM -> ./start_node_server
-module.exports = app
-global.app_name = ""
+//module.exports = app
+//global.app_name = ""
 
 // IF YOU DEPLOY ON FIREBASE FUNCTIONS -> ../deploy
-//exports.app = functions.https.onRequest(app)
-//global.app_name = "/app"
+exports.app = functions.https.onRequest(app)
+global.app_name = "/app"
 
 // ---------------------------- END RUNNING ----------------------------
 
