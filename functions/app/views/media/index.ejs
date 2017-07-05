@@ -40,6 +40,7 @@ $(document).ready( function () {
                             <th>Title</th>
                             <th>Content</th>
                             <th>Author</th>
+                            <th>Image</th>
                             <th>Edit</th>
                             <th>delete</th>
                         </tr>
@@ -47,10 +48,12 @@ $(document).ready( function () {
                         <tbody>
                         <% media.forEach(function(m){ %>
                         <tr>
-                            <td><%= m.id %></td>
-                            <td><%= m.title %></td>
-                            <td><%= m.content %></td>
-                            <td><%= m.author %></td>
+                            <td><p class="truncate"><%= m.id %></td>
+                            <td><p class="truncate"><%= m.title %></td>
+                            <td><p class="truncate"><%= m.content %></p></td>
+                            <td><p class="truncate"><%= m.author %></td>
+                            <td><p class="truncate"><%= m.image %></td>
+
                             <td><a href=<%= app_name %>/media/edit/<%= m.id %> >edit</a></td>
                             <td><a href=<%= app_name %>/media/delete/<%= m.id %> >delete</a></td>
 

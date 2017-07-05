@@ -7,6 +7,7 @@ function Media(data) {
     this.title = data.title
     this.content = data.content
     this.author = data.author
+    this.image = data.image
     this.created_at = new Date().getTime()
     this.updated_at = new Date().getTime()
 
@@ -16,6 +17,7 @@ function Media(data) {
             title: this.title,
             content: this.content,
             author: this.author,
+            image: this.image,
             created_at: this.created_at,
             updated_at: this.updated_at
         }, function(error) {
@@ -44,6 +46,7 @@ function Media(data) {
             title: this.title,
             content: this.content,
             author: this.author,
+            image: this.image,
             created_at: this.created_at,
             updated_at: this.updated_at
         }, function(error) {
@@ -138,6 +141,7 @@ function Media(data) {
                         title: itemVal.title,
                         content: itemVal.content,
                         author: itemVal.author,
+                        image: itemVal.image,
                         created_at: itemVal.created_at,
                         updated_at: itemVal.updated_at
                     }

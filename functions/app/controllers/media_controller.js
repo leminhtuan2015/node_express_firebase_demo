@@ -58,12 +58,14 @@ controller = {
         var title = request.body.title
         var content = request.body.content
         var author = request.body.author
+        var image = request.body.image
 
         console.log(title)
         console.log(content)
         console.log(author)
+        console.log(image)
 
-        var media = new Media({title: title, content: content, author: author})
+        var media = new Media({title: title, content: content, author: author, image: image})
 
         media.create(function(error) {
             if(error){
@@ -102,8 +104,9 @@ controller = {
         var title = request.body.title
         var content = request.body.content
         var author = request.body.author
+        var image = request.body.image
 
-        var media = new Media({id: id, title: title, content: content, author: author})
+        var media = new Media({id: id, title: title, content: content, author: author, image: image})
 
         media.update(function(isSuccess) {
             if(isSuccess){
