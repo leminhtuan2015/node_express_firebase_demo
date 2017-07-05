@@ -10,15 +10,23 @@ controller = {
         console.log("lastItemId : " + lastItemId)
         console.log("uid : " + uid)
 
-        var user = new User({id: uid, user_name: uid, email: uid})
-
-        user.create(function(error) {
-            if(error){
-                response.json({title: lastItemId, content: uid, author: "3"})
-            } else {
-                response.json({title: lastItemId, content: uid, author: "3"})
-            }
-        })
+        if(lastItemId){
+            new Media().next(lastItemId, function(isSuccess, data){
+                if(isSuccess){
+                    response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+                } else {
+                    response.json({title: "title", content: "content", author: "author", lastItemId: "lastItemId"})
+                }
+            })
+        } else {
+            new Media().first(function(isSuccess, data){
+                if(isSuccess){
+                    response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+                } else {
+                    response.json({title: "title", content: "content", author: "author", lastItemId: "lastItemId"})
+                }
+            })
+        }
     },
 
     index: function(request, response) {

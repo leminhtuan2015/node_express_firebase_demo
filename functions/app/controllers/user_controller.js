@@ -30,8 +30,6 @@ controller = {
 
         var user = new User({id: id, user_name: user_name, email: email})
 
-        user.showInfo()
-
         user.create(function(error) {
             if(error){
                 //response.json({ user_name: user_name, email: email, success: false })
