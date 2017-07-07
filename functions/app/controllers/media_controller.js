@@ -17,7 +17,14 @@ controller = {
                     if(data.id == lastItemId || !data.id){
                         response.redirect(app_name + "/media/first")
                     } else {
-                        response.json({title: data.title, content: data.content, author: data.author, image: data.image, lastItemId: data.id})
+                        response.json({
+                            title: data.title,
+                            content: data.content,
+                            author: data.author,
+                            image: data.image,
+                            base64: data.base64,
+                            lastItemId: data.id
+                        })
                     }
                 } else {
                     response.redirect(app_name + "/media/first")
@@ -31,7 +38,14 @@ controller = {
     first: function(request, response){
         new Media().first(function(isSuccess, data){
             if(isSuccess){
-                response.json({title: data.title, content: data.content, author: data.author, lastItemId: data.id})
+                response.json({
+                    title: data.title,
+                    content: data.content,
+                    author: data.author,
+                    image: data.image,
+                    base64: data.base64,
+                    lastItemId: data.id
+                })
             } else {
                 response.json(null)
             }
