@@ -73,7 +73,7 @@ function Media(data) {
     this.first = function(callback){
         database.ref(table_name).limitToFirst(1).once("value",
         function(snapshot) {
-            console.log("Media First 1: " + JSON.stringify(snapshot))
+//            console.log("Media First 1: " + JSON.stringify(snapshot))
 
             var itemVal = ""
             var itemKey = ""
@@ -85,8 +85,8 @@ function Media(data) {
 
             itemVal.id = itemKey
 
-            console.log("itemVal: " + JSON.stringify(itemVal))
-            console.log("itemKey: " + JSON.stringify(itemKey))
+//            console.log("itemVal: " + JSON.stringify(itemVal))
+//            console.log("itemKey: " + JSON.stringify(itemKey))
 
             callback(true, itemVal)
         },
@@ -99,7 +99,7 @@ function Media(data) {
     this.next = function(lastItemId, callback){
         database.ref(table_name).orderByKey().startAt(lastItemId).limitToFirst(2).once("value",
         function(snapshot) {
-            console.log("Media First 1: " + JSON.stringify(snapshot))
+//            console.log("Media First 1: " + JSON.stringify(snapshot))
 
             var itemVal = ""
             var itemKey = ""
@@ -111,8 +111,8 @@ function Media(data) {
 
             itemVal.id = itemKey
 
-            console.log("itemVal: " + JSON.stringify(itemVal))
-            console.log("itemKey: " + JSON.stringify(itemKey))
+//            console.log("itemVal: " + JSON.stringify(itemVal))
+//            console.log("itemKey: " + JSON.stringify(itemKey))
 
             callback(true, itemVal)
         },

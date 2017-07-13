@@ -6,36 +6,22 @@ controller = {
 
         var lastItemId = request.query.lastItemId
         var uid = request.query.uid
+        var language = request.query.language
 
         console.log("lastItemId : " + lastItemId)
         console.log("uid : " + uid)
+        console.log("language : " + language)
 
         if(lastItemId){
-            new Media().next(lastItemId, function(isSuccess, data){
-                if(isSuccess){
-
-                    if(data.id == lastItemId || !data.id){
-                        response.redirect(app_name + "/media/first")
-                    } else {
-                        response.json({
-                            title: data.title,
-                            content: data.content,
-                            author: data.author,
-                            image: data.image,
-                            base64: data.base64,
-                            lastItemId: data.id
-                        })
-                    }
-                } else {
-                    response.redirect(app_name + "/media/first")
-                }
-            })
+            response.redirect(app_name + "/media/next?lastItemId=" + lastItemId + "&language=" + language)
         } else {
-            response.redirect(app_name + "/media/first")
+            response.redirect(app_name + "/media/first?language=" + language)
         }
     },
 
     first: function(request, response){
+        var language = request.query.language
+
         new Media().first(function(isSuccess, data){
             if(isSuccess){
                 response.json({
@@ -48,6 +34,31 @@ controller = {
                 })
             } else {
                 response.json(null)
+            }
+        })
+    },
+
+    next: function(request, response){
+        var language = request.query.language
+        var lastItemId = request.query.lastItemId
+
+        new Media().next(lastItemId, function(isSuccess, data){
+            if(isSuccess){
+
+                if(data.id == lastItemId || !data.id){
+                    response.redirect(app_name + "/media/first")
+                } else {
+                    response.json({
+                        title: data.title,
+                        content: data.content,
+                        author: data.author,
+                        image: data.image,
+                        base64: data.base64,
+                        lastItemId: data.id
+                    })
+                }
+            } else {
+                response.redirect(app_name + "/media/first")
             }
         })
     },

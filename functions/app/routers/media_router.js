@@ -33,4 +33,8 @@ module.exports = function(router){
     router.get('/media/first', function(request, response) {
         controller.first(request, response)
     })
+
+    router.get('/media/next', function(request, response) {
+        controller.next(request, response)
+    })
 }
